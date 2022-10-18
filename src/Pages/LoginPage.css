@@ -1,0 +1,25 @@
+:root {
+    --color: #334155;
+    --darkcolor: #182234;
+    --fontcolor: #91a0b5;
+    --secondarycolor: #1e293b;
+    --thirdcolor: #233044;
+    --inputcolor: #2a374d;
+    --fourthcolor: #233d5c;
+    --titlecolor: #7bd0f9;
+  }
+
+#loginForm{
+left: 50%;
+top: 50%;
+transform: translate(-50%, -80%);
+width: 35rem;
+height: 17.5rem;
+position: relative;
+display: grid;
+}
+
+
+label{
+    text-shadow: 0.1rem 0.1rem 1rem black;
+}
