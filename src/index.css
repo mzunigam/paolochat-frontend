@@ -30,6 +30,10 @@
   --titlecolor: #7bd0f9;
 }
 
+html{
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -47,7 +51,7 @@ body {
 #Background {
   height: 100vh;
   width: 100vw;
-  background: url('https://rare-gallery.com/uploads/posts/306815-Lich-King-Undead-Army-WoW-Fantasy-4K.jpg');
+  background: url('https://i.pinimg.com/originals/b3/45/e4/b345e46becdaeaaa9dcf6ea6144c91a9.jpg');
   background-color: rgba(0, 0, 0, 0);
   background-position-x: 0%;
   background-position-y: 0%;
@@ -61,4 +65,10 @@ body {
 
   z-index: -1;
   opacity: 1;
+}
+
+.shadowBar{
+  background:linear-gradient(to right,rgba(255, 137, 68, 0.211),rgba(255, 204, 186, 0.111),transparent);
+  transform:skew(45deg) translate(0.9rem,0.33rem);
+  height:2.25rem;
 }
