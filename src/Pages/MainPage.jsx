@@ -1,16 +1,22 @@
-import React from 'react'
+
+import { useState } from 'react'
+import { Window } from './Components/Chat/Window'
 import { Footer } from './Components/Footer'
+import { LoginPage } from './LoginPage'
+
 
 export const MainPage = () => {
+
+  const [minimizedWindows, setMinimizedWindows] = useState([])
+  
   return (
     <>
     <div id="Background"></div>
-    <div className='w-screen h-screen border-red-400 border'>
-    <Footer/>
+    <div className='w-screen h-screen'>
+    {/* <LoginPage/> */}
+    <Window width={'max-content'} height={'max-content'} X={1.01} Y={50} setMinimizedWindows={setMinimizedWindows} />
     </div>
-    <footer className='w-full h-20 bg-gray-800 flex justify-center items-center'>
-        
-    </footer>
+    <Footer minimizedWindows={minimizedWindows} setMinimizedWindows={setMinimizedWindows} />
     </>
   )
 }
