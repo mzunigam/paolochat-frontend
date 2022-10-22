@@ -17,9 +17,9 @@ export const FooterDesktop = ({minimizedWindows,setMinimizedWindows=[]}) => {
   return (
     <footer className='w-full h-20  flex justify-center items-center bottom-0 absolute '>
     <div className='bg-slate-500 w-[90%] h-full mb-8 rounded-3xl bg-opacity-20 border border-slate-500 border-opacity-30 shadow-2xl flex items-center'>
-      <div className='flex px-4 gap-8 h-16 md:h-20 flex-wrap'>
-        <span className='hover:scale-[1.5] hover:-translate-y-4 transition-all h-max'>
-          <img src="/src/assets/images/default.png" className='w-16 h-16 md:w-20 md:h-20'  />
+      <div className='flex px-4 gap-8 h-16 md:h-20 flex-wrap items-center ' >
+        <span className='hover:scale-[1.5] hover:-translate-y-4 transition-all h-max hint--top' aria-label='Ajustes'>
+          <img src="/src/assets/images/settings.png" className='w-16 h-16 md:w-[4.5rem] md:h-[4.5rem]'  />
         </span>
         <span className='hover:scale-[1.5] hover:-translate-y-4 transition-all h-max'>
           <img src="/src/assets/images/default.png" className='w-16 h-16 md:w-20 md:h-20'  />

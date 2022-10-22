@@ -1,9 +1,14 @@
 
 export const jquery_helper = (props) => {
 
-   const center = $.fn.center = function (X,Y) {
-    this.css("top", ($(window).height() - this.height()) / (Y ? Y : 3.5 )  + "px");
-    this.css("left", ($(window).width() - this.width()) / (X ? X : 2)+ "px");
+   const location = $.fn.location = function (X,Y,center) {
+    if (center) {
+        this.css("top", ($(window).height() - this.height()) / (Y ? Y : 3.5 )  + "px");
+        this.css("left", ($(window).width() - this.width()) / (X ? X : 2)+ "px");
+    } else {
+        this.css("top", Y ? Y : "0px");
+        this.css("left", X ? X : "0px");
+    }
     return this;}
 
     const moveable = $.fn.moveable = function () {
@@ -40,7 +45,7 @@ export const jquery_helper = (props) => {
 
 
     return {
-        center,
+        location,
         moveable,
         changeSize
     }

@@ -1,6 +1,4 @@
 
-import domtoimage from 'dom-to-image';
-
 export const Footer_Helper = () => {
 
   const createThumbNail = (window,index) => {
@@ -15,16 +13,16 @@ export const Footer_Helper = () => {
     spanElement.classList.add('hint--top')
     spanElement.addEventListener("click", e => {
       e.preventDefault();
-      openWindow(index);
+      openWindow(window.id);
+      console.log(window.id)
     });
     spanElement.appendChild(thumbnail);
   }
 
 
-  const openWindow = (index) =>{
-    
-    $('#prueba').css('visibility', 'visible');
-    $('#prueba').addClass('animate__animated animate__fadeInUpBig')
+  const openWindow = (id) =>{
+    $('#'+id).css('visibility', 'visible');
+    $('#'+id).addClass('animate__animated animate__fadeInUpBig')
 
   }
 
