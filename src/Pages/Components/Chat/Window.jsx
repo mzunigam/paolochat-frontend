@@ -48,7 +48,7 @@ export const Window = (props) => {
       setTimeout(() => {
         props.setMinimizedWindows((prev) => [...prev, { imagen: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png', text: 'hola', id: id }]);
         $('#' + id).css('visibility', 'hidden');
-        $('#' + id).removeClass('animate__animated animate__zoomOut');
+        $('#' + id).removeClass('isMinimizing');
         setMinimize(false);
       }, 750);
     }
@@ -56,7 +56,7 @@ export const Window = (props) => {
 
   if (Destroy) return null;
   return (
-    <div id={id} className={`w-max absolute ui-draggable ui-draggable-handle ${Maximize ? 'isMaximized' : ''} ${Close ? 'animate__animated animate__fadeOut' : ''} ${Minimize ? 'animate__animated animate__zoomOut' : ''}`}>
+    <div id={id} className={`w-max absolute ui-draggable ui-draggable-handle ${Maximize ? 'isMaximized' : ''} ${Close ? 'isClosing' : ''} ${Minimize ? 'isMinimizing' : ''}`}>
       <WindowHeader handleClose={setClose} handleMaximize={setMaximize} handleMinimize={setMinimize} isCloseable={props.isCloseable || true} isMaximizable={props.isMaximizable || true} isMinimizable={props.isMinimizable || true} />
       {props.body ? props.body :
         <div  className={`body relative bg-slate-800 border-black border-opacity-10 rounded-b-lg w-[20rem] select-none ${Maximize ? 'isMaximized' : ''} `}>
