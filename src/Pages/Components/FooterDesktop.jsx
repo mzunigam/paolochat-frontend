@@ -11,7 +11,6 @@ export const FooterDesktop = ({minimizedWindows,setMinimizedWindows=[]}) => {
       createThumbNail(window,index)
     }
     )
-    console.log('minimizedWindows',minimizedWindows)
   }, [minimizedWindows]);
 
   return (
@@ -21,28 +20,18 @@ export const FooterDesktop = ({minimizedWindows,setMinimizedWindows=[]}) => {
         <span className='hover:scale-[1.5] hover:-translate-y-4 transition-all h-max hint--top' aria-label='Ajustes'>
           <img src="/src/assets/images/settings.png" className='w-16 h-16 md:w-[4.5rem] md:h-[4.5rem]'  />
         </span>
-        <span className='hover:scale-[1.5] hover:-translate-y-4 transition-all h-max'>
-          <img src="/src/assets/images/default.png" className='w-16 h-16 md:w-20 md:h-20'  />
-        </span>
-        <span className='hover:scale-[1.5] hover:-translate-y-4 transition-all h-max'>
-          <img src="/src/assets/images/default.png" className='w-16 h-16 md:w-20 md:h-20'  />
-        </span>
         {
-
           minimizedWindows?.map((window, index) => {
             return (
               <span key={index} id={'window_'+index} 
               onClick={(e)=>{
                 let newArray = minimizedWindows.pop();
-
                 if(newArray.length == null){
                   newArray = [];
                 }
-                
                 setMinimizedWindows(newArray);
               }}
               className='hover:scale-[1.5] hover:-translate-y-4 transition-all h-[5rem] flex items-center'>
-                
               </span>
             )
           })

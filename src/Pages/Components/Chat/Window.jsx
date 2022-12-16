@@ -13,15 +13,19 @@ export const Window = (props) => {
   const [id, setId] = useState(generateUUID());
 
   $(document).ready(function () {
-    console.log('ready');
     jquery_helper();
+
     $('#' + id).moveable();
     if (props.isMaximizable) {
+
+      const width = window.innerWidth < 800 ? window.innerWidth*1.25 : window.innerWidth
+        const height = window.innerWidth  < 600 ? window.innerHeight*1.1 : window.innerHeight
+        const fontsize = height / 100 + width / 275;
+
       $('#' + id + ' .body').resizable({
-        minWidth: 200,
-        minHeight: 200,
-      }
-      );
+        minWidth: fontsize * props.width,
+        minHeight: fontsize * props.height,	
+      });
     }
     $('#' + id).draggable({
       handle: '.window-header',
@@ -36,7 +40,6 @@ export const Window = (props) => {
         $('#' + id).css('left', (ui.position.left + 5) + 'px !important');
       }
     });
-    $('#')
     window.addEventListener('resize', () => $('#' + id).moveable());
   });
   useEffect(() => {
@@ -46,7 +49,7 @@ export const Window = (props) => {
       }, 750);
     } else if (Minimize) {
       setTimeout(() => {
-        props.setMinimizedWindows((prev) => [...prev, { imagen: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png', text: 'hola', id: id }]);
+        props.setMinimizedWindows((prev) => [...prev, { imagen: props.icon ? props.icon : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/No_icon_red.svg/1200px-No_icon_red.svg.png', text: 'Menu Inicio', id: id }]);
         $('#' + id).css('visibility', 'hidden');
         $('#' + id).removeClass('isMinimizing');
         setMinimize(false);
@@ -59,18 +62,11 @@ export const Window = (props) => {
     <div id={id} className={`w-max absolute ui-draggable ui-draggable-handle ${Maximize ? 'isMaximized' : ''} ${Close ? 'isClosing' : ''} ${Minimize ? 'isMinimizing' : ''}`}>
       <WindowHeader handleClose={setClose} handleMaximize={setMaximize} handleMinimize={setMinimize} isCloseable={props.isCloseable || true} isMaximizable={props.isMaximizable || true} isMinimizable={props.isMinimizable || true} />
       {props.body ? props.body :
-        <div  className={`body relative bg-slate-800 border-black border-opacity-10 rounded-b-lg w-[20rem] select-none ${Maximize ? 'isMaximized' : ''} `}>
+        <div  className={`body relative bg-zinc-800 border-black border-opacity-10 rounded-b-lg select-none ${Maximize ? 'isMaximized' : ''} `} style={{width: props.width +'rem', height: props.height +'rem'}}>
           <div className='w-full h-full overflow-scroll p-4'>
-          <h1 className='text-center w-full font-bold text-2xl '>Welcome to paolochat v.2</h1>
+          <h1 className='text-center w-full font-bold text-2xl '>{props.title}</h1>
           <article className='break-words text-center mt-4'>
-            <b>Paolochat</b> es una aplicación en donde puedes chatear con tus amigos y familiares, puedes crear salas de chat y compartir el link con tus amigos para que se unan a la conversación.
-            esta es la version mejorada de la version 1.
-            <br />
-            <br></br>
-            Se esta utilizando Reactjs, Jquery, Tailwind ,Sockets y Spring boot.
-            <div className='w-full flex justify-center mt-2'>
-              <img src="https://media1.giphy.com/media/eNAsjO55tPbgaor7ma/giphy.gif?cid=6c09b9527myjk32ghqhnbtvpidwifemsmovgzz82t2v4x8ym&rid=giphy.gif&ct=s" className='w-16' />
-            </div>
+          {props.component}
           </article>
           </div>
         </div>}

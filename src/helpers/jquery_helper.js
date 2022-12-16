@@ -1,10 +1,10 @@
 
-export const jquery_helper = (props) => {
+export const jquery_helper = () => {
 
     const location = $.fn.location = function (X, Y, center) {
-        if (center) {
-            this.css("top", ($(window).height() - this.height()) / (Y ? Y : 3.5) + "px");
-            this.css("left", ($(window).width() - this.width()) / (X ? X : 2) + "px");
+        if (!!center) {
+            this.css("top", ($(window).height() - this.height()) / (Y !== 0 ? Y : 3.5) + "px");
+            this.css("left", ($(window).width() - this.width()) / (X !== 0 ? X : 2) + "px");
         } else {
             this.css("top", Y ? Y : "0px");
             this.css("left", X ? X : "0px");
@@ -39,9 +39,7 @@ export const jquery_helper = (props) => {
         const fontSize = document.querySelector('html').style.fontSize;
         const fontSizeNumber = fontSize.substring(0, fontSize.length - 2);
         $(this).width($(this).width() * (fontSizeNumber / 16) + "px");
-        console.log($(this).width());
-
-
+        return fontSizeNumber;
     }
 
 

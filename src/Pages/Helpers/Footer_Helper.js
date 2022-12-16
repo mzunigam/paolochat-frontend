@@ -14,7 +14,6 @@ export const Footer_Helper = () => {
     spanElement.addEventListener("click", e => {
       e.preventDefault();
       openWindow(window.id);
-      console.log(window.id)
     });
     spanElement.appendChild(thumbnail);
   }
@@ -22,8 +21,7 @@ export const Footer_Helper = () => {
 
   const openWindow = (id) =>{
     $('#'+id).css('visibility', 'visible');
-    $('#'+id).addClass('animate__animated animate__fadeInUpBig')
-
+    //$('#'+id).addClass('animate__animated animate__fadeInUpBig')
   }
 
   return {createThumbNail }
