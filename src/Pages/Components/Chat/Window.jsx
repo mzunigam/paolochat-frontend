@@ -63,7 +63,7 @@ export const Window = (props) => {
       <WindowHeader handleClose={setClose} handleMaximize={setMaximize} handleMinimize={setMinimize} isCloseable={props.isCloseable || true} isMaximizable={props.isMaximizable || true} isMinimizable={props.isMinimizable || true} />
       {props.body ? props.body :
         <div  className={`body relative bg-zinc-800 border-black border-opacity-10 rounded-b-lg select-none ${Maximize ? 'isMaximized' : ''} `} style={{width: props.width +'rem', height: props.height +'rem'}}>
-          <div className='w-full h-full overflow-scroll p-4'>
+          <div className='w-full h-full overflow-y-auto p-4 border border-zinc-50/25 border-t-0'>
           <h1 className='text-center w-full font-bold text-2xl '>{props.title}</h1>
           <article className='break-words text-center mt-4'>
           {props.component}
